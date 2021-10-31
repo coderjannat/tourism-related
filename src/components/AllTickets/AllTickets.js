@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
 import axios from 'axios';
+import {useHistory} from 'react-router-dom';
+import { RiDeleteBin5Line } from 'react-icons/ri';
 
 
 
@@ -9,9 +11,11 @@ const AllTickets = () => {
     const [users, setUsers] = useState([]);
     const [smShow, setSmShow] = useState(false);
     const [control, setConrol] = useState(false);
+    const history = useHistory();
+    
 
     useEffect(() => {
-        fetch("http://localhost:5000/alltickets")
+        fetch("https://ghostly-ghost-80497.herokuapp.com/alltickets")
             .then((res) => res.json())
             .then((data) => setVounteer(data));
     }, []);
@@ -22,7 +26,7 @@ const AllTickets = () => {
         const checker = window.confirm('Are you sure to delete?')
         if (checker) {
             console.log(id);
-            axios.delete(`http://localhost:5000/deletetickets/${id}`)
+            axios.delete(`https://ghostly-ghost-80497.herokuapp.com/deletetickets/${id}`)
                 .then(backend => {
                     if (backend.data) {
 
@@ -30,11 +34,13 @@ const AllTickets = () => {
                         alert('deleted')
                         const rest = users.filter(item => item._id !== id);
                         setUsers(rest)
-
                     }
+                   
+                      
 
                 })
         }
+        history.push("/home")
     }
 
 
@@ -62,7 +68,7 @@ const AllTickets = () => {
                             <td>{pd?.email}</td>
                             <td>{pd?.date}</td>
                            
-                            <button className="btn bg-danger p-2" onClick={() => handleDelete(pd._id)}>Delete</button>
+                            <button variant="outline-light" className=" p-2" onClick={() => handleDelete(pd._id)}><RiDeleteBin5Line size={25} className="ms-2"/> Delete</button>
                         </tr>
                     </tbody>
                 ))}

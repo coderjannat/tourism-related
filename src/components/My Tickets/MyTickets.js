@@ -7,7 +7,7 @@ const MyTickets = () => {
     const { user } = useAuth();
     const [events, setEvents] = useState([]);
     useEffect(() => {
-      fetch(`http://localhost:5000/mytickets/${user?.email}`)
+      fetch(`https://ghostly-ghost-80497.herokuapp.com/mytickets/${user?.email}`)
         .then((res) => res.json())
         .then((data) => setEvents(data));
     }, [user.email]);
@@ -16,9 +16,10 @@ const MyTickets = () => {
     console.log(events);
     return (
       <div>
-        <h1>Total Tickets : {events.length}</h1>
-        <h1>Total Tickets : {user.description}</h1>
-        <h1>user : {user.email}</h1>
+        <h1 className="text-decoration-underline pb-3 pt-5">Ticket Details</h1>
+        <h3>Total Tickets : {events.length}</h3>
+        <h3>Total Tickets : {user.description}</h3>
+        <h3>user : {user.email}</h3>
       </div>
     );
   };
