@@ -1,6 +1,6 @@
 # Travel Related Web App
 
-It is a single page application made with ReactJS, Tailwind CSS etc...
+It is a single page application made with ReactJS, Bootstrap CSS etc...
 
 ## Live Demo of this website :
 
