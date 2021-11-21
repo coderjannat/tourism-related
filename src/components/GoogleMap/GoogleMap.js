@@ -18,7 +18,6 @@ const GoogleMap = () => {
         <div className="pb-5" style={{ height: '80vh', width: '100%' }}>
           
     <GoogleMapReact
-    //   bootstrapURLKeys={{ key: "AIzaSyA1MTay-Ueymhu0OACSQ_7Me024NFdh_TE" }}
     bootstrapURLKeys={`{ key: ${process.env.DB_PASS} }`}
       defaultCenter={defaultProps.center}
       defaultZoom={defaultProps.zoom}
